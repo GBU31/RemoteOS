@@ -34,8 +34,8 @@ class server:
 
 
 class send:
-    def __init__(self, val):
-        self.val = val
+    def __init__(self, data):
+        self.data = data
 
     def get(self):
         return self.val.encode()

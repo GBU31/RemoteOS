@@ -38,7 +38,7 @@ class send:
         self.data = data
 
     def get(self):
-        return self.val.encode()
+        return self.data.encode()
 
 class ip_and_port:
     def get_local_ip(self):

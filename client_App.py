@@ -1,3 +1,5 @@
+#! /bin/python3
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -34,13 +36,63 @@ class Ui_MainWindow(object):
         from client import Client
         
         text = self.lineEdit.text()
+        try:
+            c = Client(text, 8889)
+            c.Connect()
+        except:
+            app.setStyleSheet("""
+    QWidget {
+        background: #262d27
+    }
+    QLabel{
+        color: #fff;
+    }
 
-        c = Client(text, 8889)
-        c.Connect()
+    QLineEdit {
+        padding: 1px;
+        color: white;
+        border: 2px solid red;
+        border-radius: 8px;
+        text-align: auto;
+    }
+    QPushButton {
+        background:grey;
+        
+    }
+    QPushButton:hover {
+        background:blue;
+        
+    }""")
         
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
+    style = """
+    QWidget {
+        background: #262d27
+    }
+    QLabel{
+        color: #fff;
+    }
+
+    QLineEdit {
+        padding: 1px;
+        color: #fff;
+        border: 2px solid #fff;
+        border-radius: 8px;
+        text-align: auto;
+    }
+    QPushButton {
+        background:grey;
+        
+    }
+    QPushButton:hover {
+        background:blue;
+        
+    }
+
+    """
+    app.setStyleSheet(style)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)

@@ -1,3 +1,5 @@
+#! /bin/python3
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -36,13 +38,29 @@ class Ui_MainWindow(object):
 
     def on_click(self):
         from server import Server
-        
+        self.pushButton.setText('test')
         s = Server(self.host, self.port)
         s.start()
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
+    style = """
+    QWidget {
+        color: #fff;
+        background: #262d27
+    }
+    QPushButton {
+        background:grey;
+        
+    }
+    QPushButton:hover {
+        background:blue;
+        
+    }
+
+    """
+    app.setStyleSheet(style)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)

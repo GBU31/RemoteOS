@@ -1,8 +1,7 @@
-from client import Client
+from remoteOS import Client
 
-def Host():
-    host = input('Host:')
-    if host == '':
+def Host(host=None):
+    if host == None:
         host = '127.0.0.1'
     return host
 

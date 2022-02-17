@@ -1,8 +1,73 @@
 import time
 import socket
+import tkinter as tk
+from tkinter import filedialog, Text
+import os
+
+class Client:
+    def __init__(self, ip, port):
+        self.ip = ip
+        self.port = port
+
+    def send(self, data):
+        return data.encode()
+
+    def Connect(self):
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((self.ip, self.port))
+
+        while True:
+            x = input(f'({self.ip})->')
+            s.send(self.send(x))
+
+class Server:
+    def __init__(self, host, port):
+        self.host = host
+        self.port = port
+        
+    def start(self):
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind((self.host, self.port))
+        s.listen(1)
+        print(self.host, self.port)
+        
+        while True:
+            clientsocket, address = s.accept()
+            print(f"{address}")
+            c = Server_conn(address)
+            c.new_client(msg=True)
+            if c.is_valid():
+                print(f'{address} is connected !')
+                while True:
+                    data = clientsocket.recv(1024)
+                    os.system(data)
+                    print(data)
 
 
-class server:
+class Server_Text:
+    def __init__(self, host, port):
+        self.host = host
+        self.port = port
+        
+    def start(self):
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind((self.host, self.port))
+        s.listen(1)
+        print(self.host, self.port)
+        
+        while True:
+            clientsocket, address = s.accept()
+            print(f"{address}")
+            c = Server_conn(address)
+            c.new_client(msg=False)
+            if c.is_valid():
+                print(f'{address} is connected !')
+                while True:
+                    data = clientsocket.recv(1024)
+                    os.system(data)
+                    print(data)
+
+class Server_conn:
     def __init__(self, ip, valid=False):
         self.valid = valid
         self.ip = ip
@@ -10,9 +75,6 @@ class server:
     def accept(self):
         self.valid = True
     def msg(self):
-        import tkinter as tk
-        from tkinter import filedialog, Text
-
         root = tk.Tk()
         root.title(f"{self.ip}")
         label = tk.Label(root, text=f'{self.ip} y or n')
@@ -31,14 +93,6 @@ class server:
         return self.valid
 
 
-
-
-class send:
-    def __init__(self, data):
-        self.data = data
-
-    def get(self):
-        return self.data.encode()
 
 class ip_and_port:
     def get_local_ip(self):

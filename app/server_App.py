@@ -37,7 +37,7 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Start"))
 
     def on_click(self):
-        from server import Server
+        from remoteOS import Server
         self.pushButton.setText('test')
         s = Server(self.host, self.port)
         s.start()

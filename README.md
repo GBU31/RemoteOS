@@ -1,6 +1,8 @@
 # RemoteOS
 Desktop app allows you to connect to your Operating System from another device
 
+cd app
+
 # start server
 python3 server_App.py
 

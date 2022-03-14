@@ -33,7 +33,7 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "ip:"))
     
     def on_click(self):
-        from remoteOS import Client
+        from core.client import Client
         
         text = self.lineEdit.text()
         try:

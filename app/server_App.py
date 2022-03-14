@@ -6,8 +6,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def __init__(self):
-        from remoteOS import ip_and_port
-        ip_and_port = ip_and_port()
+        from core.ip_and_port import Ip_and_Port
+        ip_and_port = Ip_and_Port()
         self.host = ip_and_port.get_local_ip()
         self.port = ip_and_port.get_port()    
 
@@ -37,7 +37,7 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Start"))
 
     def on_click(self):
-        from remoteOS import Server
+        from core.server import Server
        
         s = Server(self.host, self.port)
         s.start()

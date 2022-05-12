@@ -2,8 +2,8 @@ import tkinter as tk
 from tkinter import filedialog, Text
 
 class Server_conn:
-    def __init__(self, ip, valid=False):
-        self.valid = valid
+    def __init__(self, ip):
+        self.valid = False
         self.ip = ip
 
     def accept(self):

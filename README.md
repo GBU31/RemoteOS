@@ -1,3 +1,6 @@
+# RemoteOS 
+A desktop app that allows you to connect to your Operating System from another device.
+
 ## Run application
 <pre>python3 app</pre>
 
